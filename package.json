@@ -1,0 +1,41 @@
+{
+  "name": "users",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "start": "tsc && node dist/server.js",
+    "dev": "concurrently  \"tsc -w\" \"nodemon dist/server.js\" ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/validator": "^13.15.2",
+    "amqplib": "^0.10.9",
+    "axios": "^1.11.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.18.0",
+    "redis": "^5.8.2",
+    "typescript": "^5.9.2",
+    "validator": "^13.15.15"
+  },
+  "devDependencies": {
+    "@types/amqplib": "^0.10.7",
+    "@types/axios": "^0.9.36",
+    "@types/cors": "^2.8.19",
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/mongoose": "^5.11.96",
+    "@types/redis": "^4.0.10",
+    "concurrently": "^9.2.1",
+    "nodemon": "^3.1.10",
+    "tsx": "^4.20.5"
+  }
+}
