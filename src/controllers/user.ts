@@ -34,7 +34,6 @@ export const updateUser = catchAsync(
     }
     const {
       name,
-      email,
       phoneNumber,
       dob,
       physicalDetials,
@@ -44,9 +43,9 @@ export const updateUser = catchAsync(
       language,
       currency,
       equipments,
+      isOnboarded,
     } = req.body;
     if (name) user.name = name;
-    if (email) user.email = email;
     if (phoneNumber) user.phoneNumber = phoneNumber;
     if (dob) user.dob = dob;
     if (physicalDetials) user.physicalDetials = physicalDetials;
@@ -56,12 +55,20 @@ export const updateUser = catchAsync(
     if (language) user.language = language;
     if (currency) user.currency = currency;
     if (equipments) user.equipments = equipments;
+    if (isOnboarded) user.isOnboarded = isOnboarded;
     user.updatedAt = new Date();
     await user.save();
 
     res.status(200).json({
       user,
     });
+  }
+);
+
+export const getCurrentUser = catchAsync(
+  async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
+    const user = req.user;
+    res.status(200).json({ user });
   }
 );
 

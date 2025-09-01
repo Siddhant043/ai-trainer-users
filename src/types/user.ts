@@ -38,6 +38,7 @@ export interface IUser extends Document {
   language?: string;
   currency?: string;
   equipments?: string[];
+  isOnboarded?: boolean;
   updatedAt?: Date;
   createdAt?: Date;
 
@@ -45,4 +46,5 @@ export interface IUser extends Document {
   isDeleted?: boolean;
 
   find: Function;
+  select: Function;
 }

@@ -48,6 +48,7 @@ const UserSchema: Schema<IUser> = new Schema({
   language: { type: String },
   currency: { type: String },
   equipments: { type: Array },
+  isOnboarded: { type: Boolean, default: false },
   isActive: { type: Boolean, default: true },
   isDeleted: { type: Boolean, default: false },
   createdAt: { type: Date, default: Date.now },
@@ -56,6 +57,13 @@ const UserSchema: Schema<IUser> = new Schema({
 
 UserSchema.pre<IUser>(/^find/, function (next) {
   this.find({ isActive: { $ne: false }, isDeleted: { $ne: true } });
+  next();
+});
+
+UserSchema.pre<IUser>(/^find/, function (next) {
+  this.select(
+    "-password -isActive -isDeleted -__v -physicalDetials._id -dietaryPreferences._id -exercisePreferences._id"
+  );
   next();
 });
 
