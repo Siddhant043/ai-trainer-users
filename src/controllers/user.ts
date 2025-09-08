@@ -78,3 +78,10 @@ export const getAllUsers = catchAsync(
     res.status(200).json({ users });
   }
 );
+
+export const getUserById = catchAsync(
+  async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
+    const user = await User.findById(req.params.id);
+    res.status(200).json({ user });
+  }
+);
